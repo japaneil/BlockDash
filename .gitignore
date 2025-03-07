@@ -8,3 +8,6 @@ FirstGame.sln
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj
 .vscode/
+*.meta
+*.mat
+
