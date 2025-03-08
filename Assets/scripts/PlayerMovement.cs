@@ -15,17 +15,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // rigidbody.AddForce(0, 0, speed * Time.deltaTime);
 
-        if (Input.GetKey("w"))
-        {
             rigidbody.AddForce(0,0,speed * Time.deltaTime);
-        }
         if (Input.GetKey("a"))
         {
-            rigidbody.AddForce(-sideSpeed * Time.deltaTime,0,0);
+            rigidbody.AddForce(-sideSpeed * Time.deltaTime,0,0, ForceMode.VelocityChange);
         }
         if (Input.GetKey("d"))
         {
-            rigidbody.AddForce(sideSpeed * Time.deltaTime,0,0);
+            rigidbody.AddForce(sideSpeed * Time.deltaTime,0,0, ForceMode.VelocityChange);
         }
     }
 }
