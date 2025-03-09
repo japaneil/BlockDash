@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement script;
+    public MeshRenderer mesh;
+    public BoxCollider boxCollider;
+    public ParticleSystem particle;
     public bool isHit = false;
     public Transform player;
+    public Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,15 +21,20 @@ public class PlayerCollision : MonoBehaviour
     void Update()
     {
         if(player.position.y < -3f){
-            FindFirstObjectByType<Manager>().endGame();
+            _ = FindFirstObjectByType<Manager>().endGame();
         }
     }
 
     void OnCollisionEnter(Collision collisionP){
         if(collisionP.collider.tag == "obs"){
+            rb.freezeRotation = true;
+            mesh.enabled = false;
             script.enabled = false;
+            rb.linearVelocity = Vector3.zero;
+            particle.Play();
+            GameObject.FindGameObjectWithTag("ps").SetActive(true);
             isHit = true;
-            FindFirstObjectByType<Manager>().endGame();
+            _ = FindFirstObjectByType<Manager>().endGame();
         }
     }
 }
