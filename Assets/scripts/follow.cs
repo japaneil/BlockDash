@@ -5,6 +5,7 @@ public class follow : MonoBehaviour
 {
     public Transform player;
     public Vector3 offset;
+    [Range(7f,15f)]public float smoothSpeed; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,8 +13,10 @@ public class follow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = player.position+offset;
+        Vector3 desiredPosition = player.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed*Time.deltaTime);
+        transform.position = smoothedPosition;
     }
 }
