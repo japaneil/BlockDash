@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class score : MonoBehaviour
 {
-    public Transform player;
+    public Transform ground;
     public TextMeshProUGUI scoreText;
+    public PlayerCollision playerCollision;
     private float pos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,7 +19,9 @@ public class score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pos = player.position.z/10;
+        if(!playerCollision.isHit){
+        pos += 1*Time.deltaTime*1.65673f;
         scoreText.text = pos.ToString("0m");
+        }
     }
 }

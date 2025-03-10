@@ -1,10 +1,12 @@
+using Unity.Mathematics;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class levelWon : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Manager manager;
+    public GameObject road;
+
     void Start()
     {
         
@@ -18,7 +20,8 @@ public class levelWon : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Player"){
-            manager.levelEnd();
+            // manager.levelEnd();
+            Instantiate(road, new Vector3(0.5638095f,1.499999f,100f), quaternion.identity);
     }
     }
 }

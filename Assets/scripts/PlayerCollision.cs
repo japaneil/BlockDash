@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
-
+using FirstGearGames.SmoothCameraShaker;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement script;
@@ -11,6 +11,7 @@ public class PlayerCollision : MonoBehaviour
     public bool isHit = false;
     public Transform player;
     public Rigidbody rb;
+    public ShakeData shakeData;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +33,7 @@ public class PlayerCollision : MonoBehaviour
             script.enabled = false;
             rb.linearVelocity = Vector3.zero;
             particle.Play();
+            CameraShakerHandler.Shake(shakeData);
             GameObject.FindGameObjectWithTag("ps").SetActive(true);
             isHit = true;
             _ = FindFirstObjectByType<Manager>().endGame();

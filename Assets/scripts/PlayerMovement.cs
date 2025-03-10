@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
     public float speed = 2000f;
     public float sideSpeed = 1000f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // rigidbody.AddForce(0, 0, speed * Time.deltaTime);
 
-            rigidbody.AddForce(0,0,speed * Time.deltaTime);
+            // rigidbody.AddForce(0,0,speed * Time.deltaTime);
         if (Input.GetKey("a"))
         {
             rigidbody.AddForce(-sideSpeed * Time.deltaTime,0,0, ForceMode.VelocityChange);
