@@ -11,6 +11,7 @@ public class PlayerCollision : MonoBehaviour
     public bool isHit = false;
     public Transform player;
     public Rigidbody rb;
+    public AudioSource audioSource;
     public ShakeData shakeData;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +34,7 @@ public class PlayerCollision : MonoBehaviour
             script.enabled = false;
             rb.linearVelocity = Vector3.zero;
             particle.Play();
+            audioSource.Play();
             CameraShakerHandler.Shake(shakeData);
             GameObject.FindGameObjectWithTag("ps").SetActive(true);
             isHit = true;

@@ -11,7 +11,10 @@ public class Manager : MonoBehaviour
     bool isGameEnded = false;
     public GameObject levelCompleteUI;
     public PlayerCollision playerCollision;
-    float speed = 20f;
+    public float minValue = 15f;
+    public float maxValue = 35f;
+    public float increaseSpeed = 0.06456f;
+    private float currentValue;
     public GameObject[] prefabInstances;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +26,10 @@ public class Manager : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        currentValue += increaseSpeed * Time.deltaTime;
+        currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
+        Debug.Log(currentValue);
+
         prefabInstances = GameObject.FindGameObjectsWithTag("Finish");
         if (prefabInstances == null || prefabInstances.Length == 0)
             return;
@@ -31,7 +38,7 @@ public class Manager : MonoBehaviour
         {
             if (obj != null)
             {
-                obj.transform.position += new Vector3(0, 0, -speed*Time.deltaTime); // Move right
+                obj.transform.position += new Vector3(0, 0, -currentValue*Time.deltaTime); // Move right
             }
         }
         if(prefabInstances.Length > 2){
