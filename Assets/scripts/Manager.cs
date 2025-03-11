@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -60,7 +59,7 @@ public class Manager : MonoBehaviour
     async Task restart()
     {
         await Task.Delay(1000);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 
     public async Task levelEnd()

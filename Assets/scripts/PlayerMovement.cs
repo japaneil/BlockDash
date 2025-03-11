@@ -13,9 +13,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // rigidbody.AddForce(0, 0, speed * Time.deltaTime);
-
-            // rigidbody.AddForce(0,0,speed * Time.deltaTime);
         if (Input.GetKey("a"))
         {
             rigidbody.AddForce(-sideSpeed * Time.deltaTime,0,0, ForceMode.VelocityChange);
